@@ -49,7 +49,7 @@ public class UserService<T extends AppUser> {
 
     public T createUser(T user){
         if (userRepository.existsByEmail(user.getEmail())) throw new UserAlreadyExistsException(user.getEmail());
-        user.setEnabled(true);
+        user.setActive(true);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return (T) this.userRepository.save(user);
     }

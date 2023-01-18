@@ -31,8 +31,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+        System.out.println("db he attempts");
+
         try {
+
             credentials = mapper.readValue(request.getInputStream(), JwtLogin.class);
+
         } catch (IOException e) {
             return null;
         }
@@ -41,13 +45,17 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 credentials.getEmail(),
                 credentials.getPassword()
         );
+
+        System.out.println(authToken);
         Authentication auth = authenticationManager.authenticate(authToken);
+
         return auth;
     }
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
                                             FilterChain chain, Authentication authResult) throws IOException, ServletException {
+
         UserPrincipal principal = (UserPrincipal) authResult.getPrincipal();
 
         String jwtToken = JWT.create()

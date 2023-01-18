@@ -6,12 +6,25 @@ import signinimg from '../../res/images/signinimg.png'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Link from "@mui/material/Link";
-
+import{signUpService }from "../../service/signing"
 const Signup = () => {
     const [isExpert, setIsExpert] = useState(false);
+    const [value, setValue] = useState("");
+
     const [successful, setSuccessful] = useState(false);
-    const handleSubmit = (event) => {}
-    const handleChange = (e) => {}
+    const handleSubmit = (event) => {
+      signUpService(event, setSuccessful, isExpert);
+
+    }
+    const handleChange = (e) => {
+      setValue(e.target.value);
+      if (e.target.value == "expert") setIsExpert(true);
+      else setIsExpert(false);
+
+    }
+    const handleFileUpload = (e) => {
+      console.log(e.target.files[0].name);
+    };
     function Copyright(props) {
         return (
           <Typography
@@ -97,8 +110,8 @@ const Signup = () => {
                       // inputRef={register({ required: "Choose one option" })}
                     >
                       <MenuItem value="">Choisissez une option</MenuItem>
-                      <MenuItem value="coach">expert</MenuItem>
-                      <MenuItem value="client">user</MenuItem>
+                      <MenuItem value="expert">expert</MenuItem>
+                      <MenuItem value="user">user</MenuItem>
                     </TextField>
                   </Grid>{" "}
                   <Grid item xs={12} sm={12}>
@@ -125,17 +138,14 @@ const Signup = () => {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
-                      id="date"
-                      name="date"
-                      label="date de naissance"
-                      type="date"
-                      defaultValue="2000-05-24"
-                      style={{ width: "100%" }}
-                      sx={{ width: 220 }}
-                      InputLabelProps={{
-                        shrink: true,
-                      }}
+                  <TextField
+                      required
+                      fullWidth
+                      id="profession"
+                      label="profession "
+                      name="profession"
+                      autoComplete="family-name"
+                      color="primary"
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -170,7 +180,7 @@ const Signup = () => {
                           name="cin"
                           accept="image/*,application/pdf"
                         />
-                        <div>Inserez votre certificat de coaching</div>
+                        <div>Inserez votre formation </div>
                         <input
                           class="form-control"
                           type="file"
@@ -178,7 +188,10 @@ const Signup = () => {
                           name="certificate"
                           accept="image/*,application/pdf"
                         />
-                        <div>Inserez votre Image</div>
+                     
+                      </div>
+                    )}
+                       <div>Inserez votre Image</div>
                         <input
                           class="form-control"
                           type="file"
@@ -186,8 +199,6 @@ const Signup = () => {
                           name="image"
                           accept="image/*,application/pdf"
                         />
-                      </div>
-                    )}
                   </Grid>
                   <Grid item xs={12}></Grid>{" "}
                 </Grid>{" "}

@@ -5,12 +5,76 @@ import {Grid, Avatar, CssBaseline, Container, Box, TextField, FormControlLabel, 
 import signinimg from '../../res/images/signinimg.png'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
+import axios from "axios";
 
+import {goto} from "../../service/utils";
+function getRole(key) {
+    return key.substring(1, key.length - 1);
+}
+
+function getJWT(value) {
+    return value.authorization;
+}
+
+function extractRoleAndJWT(data) {
+    let tempRole = undefined;
+    let tempAuth = undefined;
+    Object.entries(data).forEach(([key, value]) => {
+        tempRole = getRole(key);
+        tempAuth = getJWT(value);
+        return;
+    });
+    return [tempRole, tempAuth];
+}
 
 const SignIn = () => {
     const [successful, setSuccessful] = useState(false);
-    const handleSubmit = (event) => {}
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        // alert(event.currentTarget)
+        console.log(event.currentTarget)
+        const data = new FormData(event.currentTarget);
+        // eslint-disable-next-line no-console
+        console.log({
+            email: data.get('email'),
+            password: data.get('password'),
+        });
+        const dataToSend = {
+            email: data.get('email'),
+            password: data.get('password')
 
+        }
+
+        axios.post(`http://localhost:8080/login`, dataToSend, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(
+            (res) => {
+                let resData = extractRoleAndJWT(res.data);
+                localStorage.setItem("currentUser", resData[1]);
+                if (resData[0] === "ROLE_EXPERT") {
+                    localStorage.setItem("isExpert", "true");
+                } else if (resData[0] === "ROLE_CLIENT") {
+                    localStorage.setItem("isExpert", "false");
+                } else if (resData[0] === "ROLE_SUPERUSER") {
+                    localStorage.setItem("isAdmin", "true");
+                }
+                setSuccessful(true);
+
+                console.log(resData);
+                console.log(resData);
+
+                goto("/");
+            }
+            ,
+            (err) => {
+                alert("erreur lors de l'authentification, veuillez reentrer vos données, en cas de besoin contacter l'admin");
+                console.error(err);
+            }
+        );
+
+    };
     function Copyright(props) {
         return (
           <Typography
