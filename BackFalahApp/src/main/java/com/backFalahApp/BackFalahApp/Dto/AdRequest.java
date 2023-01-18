@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @AllArgsConstructor
@@ -14,6 +15,6 @@ public class AdRequest {
     private final String description;
     private final String emailUser;
     private final String type;
-    private final String image;
+    private final MultipartFile image;
     //i should add type -> create a premium ad -> decrease coins
 }

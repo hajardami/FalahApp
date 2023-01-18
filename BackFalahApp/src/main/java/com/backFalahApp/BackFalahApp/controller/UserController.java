@@ -1,10 +1,12 @@
 package com.backFalahApp.BackFalahApp.controller;
 
+import com.backFalahApp.BackFalahApp.Dto.AppUserDto;
 import com.backFalahApp.BackFalahApp.Dto.ExpertDto;
 import com.backFalahApp.BackFalahApp.enumerations.AppUserRole;
 import com.backFalahApp.BackFalahApp.model.AppUser;
 import com.backFalahApp.BackFalahApp.model.Expert;
 import com.backFalahApp.BackFalahApp.service.ExpertService;
+import com.backFalahApp.BackFalahApp.service.FileService;
 import com.backFalahApp.BackFalahApp.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,23 +23,31 @@ public class UserController {
 
     ExpertService expertService;
     UserService userService;
-
+    FileService fileService;
     private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
-    public UserController(ExpertService expertService, UserService userService) {
+    public UserController(ExpertService expertService, UserService userService, FileService  fileService) {
         this.expertService = expertService;
         this.userService = userService;
+        this.fileService=fileService;
     }
 
 
+    @GetMapping(path = "/list")
+    public ResponseEntity<AppUser> listAllCoaches() {
+        return new ResponseEntity<AppUser>(
+                userService.getUserWithEmail("hajar@gmail.com"),
+                HttpStatus.OK
+        );
+    }
     // create users:
 
     @PostMapping(path = "/create/expert",
-            consumes="multipart/form-data",
+            consumes = "multipart/form-data",
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Expert> createCoach(@ModelAttribute ExpertDto expertDto) throws Throwable {
         System.out.println(expertDto.getEmail());
-        LOG.debug("new /create/expert request : "+expertDto.getEmail());
+        LOG.debug("new /create/expert request : " + expertDto.getEmail());
         return new ResponseEntity<>(
                 expertService.createExpert(expertDto),
                 HttpStatus.CREATED
@@ -45,12 +55,13 @@ public class UserController {
     }
 
     @PostMapping(path = "/create/client",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
+            consumes = "multipart/form-data",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppUser> createClient( @RequestBody AppUser client) throws Throwable {
-        client.setRole(AppUserRole.USER);
+    public ResponseEntity<AppUser> createClient(@ModelAttribute AppUserDto client) throws Throwable {
+        AppUser appUser=new AppUser(client.getFirstName(), client.getLastName(), client.getEmail(), client.getPassword(),AppUserRole.USER,client.getProfession());
+        fileService.uploadImageUser(appUser,client.getImage());
         return new ResponseEntity<>(
-                userService.createUser(client),
+                userService.createUser(appUser),
                 HttpStatus.CREATED
         );
     }
@@ -58,14 +69,16 @@ public class UserController {
     @PostMapping(path = "/create/superuser",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppUser> createSuperUser( @RequestBody AppUser superUser) throws Throwable {
+    public ResponseEntity<AppUser> createSuperUser(@RequestBody AppUser superUser) throws Throwable {
         superUser.setRole(AppUserRole.ADMIN);
         return new ResponseEntity<>(
                 userService.createUser(superUser),
                 HttpStatus.CREATED
         );
     }
+
 }
+
 /*
 
     // list users

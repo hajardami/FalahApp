@@ -13,9 +13,9 @@ import java.util.Collection;
 @Transactional(readOnly = true)
 public interface AdRepository extends JpaRepository<Advert, Long> {
     @Transactional
-    @Query(value = "SELECT ad.id, ad.title, ad.createdat, ad.description, ad.type,  appuser.email,  appuser.firstname, appuser.lastname\n" +
-            "FROM ad, appuser \n" +
-            "WHERE ad.userid = appuser.id\n" +
-            "ORDER BY ad.createdat DESC;", nativeQuery = true)
-    Collection<CustomAd> getAds();
+    @Query(value = "SELECT advert.id, advert.title, advert.createdat, advert.description, advert.type,  appuser.email,  appuser.firstname, appuser.lastname\n" +
+            "FROM advert, appuser \n" +
+            "WHERE advert.userid = appuser.id\n" +
+            "ORDER BY advert.createdat DESC;", nativeQuery = true)
+    Collection<CustomAd> getAdverts();
 }

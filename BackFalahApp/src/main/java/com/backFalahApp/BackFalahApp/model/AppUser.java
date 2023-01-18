@@ -68,10 +68,12 @@ public class AppUser {
     private String profession;
 
     private String personalphoto;
-    private Boolean locked = false;
-    private Boolean enabled = false;
-    private LocalDateTime enabledAt;
+    @Column(name = "isActive", columnDefinition = "BOOLEAN default TRUE")
+    private boolean isActive;
 
+    public boolean isActive() {
+        return isActive;
+    }
 
 
 
