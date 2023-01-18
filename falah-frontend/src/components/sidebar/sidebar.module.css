@@ -1,0 +1,10 @@
+.sidebar {
+    background-color: #007155;
+    height: 100%;
+  }
+
+  .center {
+    display: 'flex';
+    alignItems: 'center';
+    flexDirection: 'column';
+ }
