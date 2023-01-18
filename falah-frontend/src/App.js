@@ -1,4 +1,5 @@
 import './App.css';
+
 import Home from './components/home/Home';
 import SignIn from './components/signin/SignIn';
 import Signup from './components/signup/Signup';
@@ -12,6 +13,7 @@ function App() {
       
       
   </Router>);
+
 }
 
 export default App;
