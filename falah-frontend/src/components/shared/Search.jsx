@@ -9,7 +9,7 @@ const Search = () => {
     return (
         <Paper
         component="form"
-        sx={{ p: "2px 4px",ml: 2, display: "flex", alignItems: "center", width: 600, height: 30 ,backgroundColor:"#464945"}}
+        sx={{ p: "2px 4px",ml: 2, display: "flex", alignItems: "center", width: 600, height: 30 ,backgroundColor:"#ffffff"}}
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
@@ -21,9 +21,9 @@ const Search = () => {
             setSearch(event.target.value)
             }
           }
-   style={{color:"white" }}
+   style={{color:"#464945" }}
         />
-        <IconButton    type="submit" sx={{ p: "10px" }} aria-label="search"    style={{color:"white" }}>
+        <IconButton    type="submit" sx={{ p: "10px" }} aria-label="search"    style={{color:"#464945" }}>
           <SearchIcon  onClick={() => { /*here to insert serching traitement it depends on the backend */}} />
         </IconButton>
       </Paper>

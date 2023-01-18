@@ -15,7 +15,7 @@ import olive from '../../res/images/olive.png';
 import { ThemeProvider } from "@mui/material/styles";
 
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.lightblack.main,
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const AdvertCard = () => {
     return (
-        <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
     <Card sx={{ maxWidth: 345, mt: 5, ml:10}}>
       <CardActionArea>
       <CardHeader
