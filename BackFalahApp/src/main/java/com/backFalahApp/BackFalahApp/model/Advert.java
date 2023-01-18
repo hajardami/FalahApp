@@ -55,4 +55,12 @@ public class Advert {
         this.appUser = appUser;
         this.image = image;
     }
+
+    public Advert(String title, String description, LocalDateTime createdat, String type, AppUser appUser) {
+        this.title = title;
+        this.description = description;
+        this.createdat = createdat;
+        this.type = type;
+        this.appUser = appUser;
+    }
 }
