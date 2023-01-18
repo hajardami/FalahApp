@@ -22,6 +22,9 @@ const theme = createTheme({
         },
         lightgrey: {
             main: Colors.light_grey
+        },
+        white: {
+            main: Colors.white
         }
     },
 
