@@ -3,6 +3,7 @@ package com.backFalahApp.BackFalahApp.service;
 import com.backFalahApp.BackFalahApp.enumerations.ExpertDocuments;
 import com.backFalahApp.BackFalahApp.exceptions.FileNullException;
 import com.backFalahApp.BackFalahApp.exceptions.FileTypeInappropriateException;
+import com.backFalahApp.BackFalahApp.model.Advert;
 import com.backFalahApp.BackFalahApp.model.AppUser;
 import com.backFalahApp.BackFalahApp.model.Expert;
 import com.backFalahApp.BackFalahApp.utils.FileConfig;
@@ -45,5 +46,18 @@ public class FileService {
         String documentPath = fileConfig.getDirectory();
         FileUtils.saveFile(file,documentPath, documentName);
         appUser.setPersonalphoto(documentName);
+    }
+
+
+
+    public void uploadImageAdvert(Advert advert, MultipartFile file) throws IOException, NoSuchAlgorithmException {
+        if (file == null || file.getContentType() == null) throw new FileNullException();
+        if(!file.getContentType().startsWith("image") && !file.getContentType().startsWith("application/pdf")){
+            throw new FileTypeInappropriateException(file.getContentType().toLowerCase(),"image","pdf");
+        }
+        String documentName = MD5.getMD5Hash(advert.getTitle()) + "." + FileUtils.getExtension(file);
+        String documentPath = fileConfig.getDirectory();
+        FileUtils.saveFile(file,documentPath, documentName);
+        advert.setImage(documentName);
     }
 }

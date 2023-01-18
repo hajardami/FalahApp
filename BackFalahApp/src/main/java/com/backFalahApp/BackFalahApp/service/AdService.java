@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -23,24 +24,20 @@ public class AdService {
 
     private final UserService userService;
 
-
+private final FileService fileService;
     public Collection<CustomAd> getAds() {
         // delete expired ads
-        Collection<CustomAd> adverts = this.adRepository.getAds();
+        Collection<CustomAd> adverts = this.adRepository.getAdverts();
         return  adverts;
     }
 
-    public Advert saveAd(AdRequest adRequest) throws IOException {
+    public Advert saveAd(AdRequest adRequest) throws IOException, NoSuchAlgorithmException {
         AppUser appUser = userRepository.findByEmail(adRequest.getEmailUser()).get();
 
-        Advert ad = new Advert(
-                adRequest.getTitle(),
-                adRequest.getDescription(),
-                LocalDateTime.now(),
-                adRequest.getType(),
-                appUser,
-                adRequest.getImage()
-        );
+        Advert ad = new Advert(adRequest.getTitle(),adRequest.getDescription(), LocalDateTime.now(), adRequest.getType(),
+                appUser);
+
+        fileService.uploadImageAdvert(ad,adRequest.getImage());
         adRepository.save(ad);
         return ad;
     }
