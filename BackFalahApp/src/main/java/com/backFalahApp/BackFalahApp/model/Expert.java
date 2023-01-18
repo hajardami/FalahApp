@@ -17,6 +17,12 @@ public class Expert extends  AppUser{
     public Expert(String firstname, String lastname, String email, String password, AppUserRole role, String profession) {
         super(firstname, lastname, email, password, role, profession);
     }
+
+    public Expert() {
+
+    }
+
+
     public String getIdentityDocument() {
         return identityDocument;
     }
@@ -47,7 +53,7 @@ public class Expert extends  AppUser{
     /**
      * path to image of coach
      */
-    private Boolean verified = false;
+    private Boolean verified = true;
     public Expert(String identityDocument, String expertCertificate, Boolean verified) {
 
         this.identityDocument = identityDocument;

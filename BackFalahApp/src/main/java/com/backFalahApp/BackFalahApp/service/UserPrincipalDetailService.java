@@ -24,7 +24,7 @@ public class UserPrincipalDetailService implements UserDetailsService {
         AppUser user = null;
         try {
             user = userService.getUserWithEmail(email);
-            user.setEnabled(true);
+            user.setActive(true);
         } catch (Throwable e) {}
         if (user == null) throw new UsernameNotFoundException(email);
         return new UserPrincipal(user);

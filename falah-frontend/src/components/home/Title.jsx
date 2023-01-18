@@ -88,7 +88,7 @@ const Title = () => {
 
             <Stack direction='row' justifyContent='space-evenly' alignItems="flex-start">
                 <img src={img3} alt="logo" width={"200px"} />
-                <Button variant="contained" sx={{borderRadius : "10px", "&:hover": {backgroundColor: "white", color: "primary.main"}}}>Get Started</Button>
+                <Button href='/signup'variant="contained" sx={{borderRadius : "10px", "&:hover": {backgroundColor: "white", color: "primary.main"}}}>Get Started</Button>
                 <img src={img4} alt="logo" width={"200px"} />
             </Stack>
 
