@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Dialog, DialogTitle, DialogContent, DialogContentText,MenuItem, TextField, DialogActions} from '@mui/material'
+import {Button, Dialog, DialogTitle, DialogContent, DialogContentText,MenuItem, TextField, DialogActions, ThemeProvider} from '@mui/material'
 
 const AddAdvertDialog = (props) => {
 
@@ -17,7 +17,7 @@ const AddAdvertDialog = (props) => {
             label="Titre de l'annonce"
             type="email"
             fullWidth
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             autoFocus
@@ -27,7 +27,7 @@ const AddAdvertDialog = (props) => {
             type="email"
             multiline
             fullWidth
-            variant="standard"
+            variant="outlined"
           />
           <TextField
             autoFocus
@@ -37,7 +37,7 @@ const AddAdvertDialog = (props) => {
             type="email"
             select
             fullWidth
-            variant="standard"
+            variant="outlined"
           >
             {types.map((type) => (
             <MenuItem key={type} value={type}>
@@ -45,10 +45,18 @@ const AddAdvertDialog = (props) => {
             </MenuItem>
           ))}
             </TextField>
+            <div>Télécharger une image</div>
+                        <input
+                          class="form-control"
+                          type="file"
+                          id="cin"
+                          name="cin"
+                          accept="image/*,application/pdf"
+                        />
         </DialogContent>
         <DialogActions>
-          <Button onClick={props.handleClose}>Annuler</Button>
-          <Button onClick={props.handleClose}>Publier</Button>
+          <Button onClick={props.handleClose} >Annuler</Button>
+          <Button onClick={props.handleClose} variant="contained">Publier</Button>
         </DialogActions>
       </Dialog>
     </div>

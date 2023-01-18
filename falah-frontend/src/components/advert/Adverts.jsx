@@ -12,6 +12,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from '../../style/theme';
 import { Grid3x3 } from '@mui/icons-material';
 import AddAdvertDialog from './AddAdvertDialog';
+import AdCard from './AdCard';
 
 const Adverts = () => {
     const [open, setOpen] = React.useState(false);
@@ -26,6 +27,7 @@ const Adverts = () => {
 
     return (
         <ThemeProvider theme={theme}>
+            <Box pb={10}>
             <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={25}>
             <img src={falahlogo} alt="logo" width={"200px"} />
             <Typography
@@ -42,24 +44,31 @@ const Adverts = () => {
         Déposer une annonce</Button>
         <AddAdvertDialog open={open} handleClose={handleClose}/>
             </Stack>
-            <Grid container spacing={2}>
-                <Grid item>
-                    <AdvertCard/>
-                </Grid>
-                <Grid item>
-                    <AdvertCard/>
-                </Grid>
-                <Grid item>
-                    <AdvertCard/>
-                </Grid>
-                <Grid item>
-                    <AdvertCard/>
-                </Grid>
-            
-            </Grid>
-            
+            </Box>
+            <Box pl={1}>
+            <Stack spacing={2}>
+                <AdCard/>
+                <AdCard/>
+            </Stack>
+            </Box>
         </ThemeProvider>
     );
 };
 
 export default Adverts;
+
+/*<Grid container spacing={2}>
+                <Grid item>
+                    <AdvertCard/>
+                </Grid>
+                <Grid item>
+                    <AdvertCard/>
+                </Grid>
+                <Grid item>
+                    <AdvertCard/>
+                </Grid>
+                <Grid item>
+                    <AdCard/>
+                </Grid>
+            
+            </Grid>*/

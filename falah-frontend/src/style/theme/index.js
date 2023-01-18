@@ -4,6 +4,7 @@ export const Colors = {
     primary : "#007155",
     dark_grey: "#A6A6A6",
     light_grey: "#F5F5F5",
+    light_black: "#464945",
     white: "#FFFFFF"
 
 }
@@ -22,6 +23,9 @@ const theme = createTheme({
         },
         lightgrey: {
             main: Colors.light_grey
+        },
+        lightblack: {
+            main: Colors.light_black
         },
         white: {
             main: Colors.white
