@@ -39,7 +39,7 @@ const UserRoutes = () =>
     {path: "/advert", element: <Adverts/>},
     {path: "/forum", element: <Forum/>},
     {path: "/expert", element: <Experts/>},
-    {path: "/Nouveaute", element: <Nouveaute/>},
+    {path: "/nouveautes", element: <Nouveaute/>},
     {path: "/logout", element: <GuestRoutes/>},
     
  ]);
