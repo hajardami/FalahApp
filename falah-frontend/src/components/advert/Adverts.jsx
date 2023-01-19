@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AdvertCard from './AdvertCard';
 import Typography from '@mui/material/Typography';
 import { styled, alpha } from '@mui/material/styles';
@@ -13,27 +13,40 @@ import theme from '../../style/theme';
 import { Grid3x3 } from '@mui/icons-material';
 import AddAdvertDialog from './AddAdvertDialog';
 import AdCard from './AdCard';
+
 import HomeAgri from '../agriculteur/HomeAgri';
 import Layout from "../sidebar/Layout"
-const adverts  = [
+import { getAllAdverts } from '../../service/advert';
+
+const ads  = [
+
     {
         "title" : "Cherche Olivier",
         "type" : "Achat",
-        "desc" : "bonjour je recherche 200 oliviers de 4ans d'âges pour plantation oliveraie envoyez moi vos tarifs, espèces et modalités. merci Quantite : 200",
-        "date" : "06/01/2022",
-        "name" : "Ahmed Hassani"
+        "description" : "bonjour je recherche 200 oliviers de 4ans d'âges pour plantation oliveraie envoyez moi vos tarifs, espèces et modalités. merci Quantite : 200",
+        "createdat" : "06/01/2022",
+        "firstname" : "Ahmed Hassani"
     },
 
     {
         "title" : "Huile d'argan",
         "type" : "Vente",
-        "desc" : "je vends l'huile d'argan ou l'huile d'argane est une huile végétale produite à partir des fruits de l'arganier...",
-        "date" : "19/01/2023",
-        "name" : "Ahmed Hassani"
+        "description" : "je vends l'huile d'argan ou l'huile d'argane est une huile végétale produite à partir des fruits de l'arganier...",
+        "createdat" : "19/01/2023",
+        "firstname" : "Ahmed Hassani"
     }
 ]
 
+
 const Adverts = () => {
+
+    let [adverts, setAdverts] = useState({data : ""});
+         useEffect(() => {
+             return () => {
+                    getAllAdverts(setAdverts);
+             };
+         },[adverts.data]);
+
     const [open, setOpen] = React.useState(false);
 
     const[shown, setShown] = useState(false);
@@ -77,13 +90,15 @@ const Adverts = () => {
             <Box pl={1}>
             <Grid container alignItems="flex-start">
             <Grid container xs={12} sm={7} lg={6}>
+            {adverts.data === "" ? <h1>loading</h1> : 
             <Stack spacing={2}>
-                {adverts.map((advert) => <AdCard name={advert.name} type={advert.type} desc={advert.desc} date={advert.date} title={advert.title} handleShowDetails={handleShowDetails}/>)}
+                {adverts.data.map((advert) => <AdCard firstname={advert.firstname} lastname={advert.lastname} type={advert.type} description={advert.description} createdat={advert.createdat} title={advert.title} handleShowDetails={handleShowDetails}/>)}
             
             </Stack>
+            }
             </Grid>
             <Grid container item xs={12} sm={5} lg={5}>
-              {shown ? <AdvertCard name={advert.name} type={advert.type} desc={advert.desc} date={advert.date} title={advert.title}/> : <div></div>}  
+              {shown ? <AdvertCard firstname={advert.firstname} lastname={advert.lastname} type={advert.type} description={advert.description} createdat={advert.createdat} title={advert.title}/> : <div></div>}  
             </Grid>
             </Grid>
             

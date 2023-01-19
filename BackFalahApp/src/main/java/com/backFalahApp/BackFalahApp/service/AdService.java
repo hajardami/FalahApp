@@ -1,5 +1,6 @@
 package com.backFalahApp.BackFalahApp.service;
 
+import com.backFalahApp.BackFalahApp.Dto.AdDTO;
 import com.backFalahApp.BackFalahApp.Dto.AdRequest;
 import com.backFalahApp.BackFalahApp.Dto.CustomAd;
 import com.backFalahApp.BackFalahApp.model.Advert;
@@ -13,6 +14,8 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -25,10 +28,19 @@ public class AdService {
     private final UserService userService;
 
 private final FileService fileService;
-    public Collection<CustomAd> getAds() {
+    /*public Collection<CustomAd> getAds() {
         // delete expired ads
         Collection<CustomAd> adverts = this.adRepository.getAdverts();
         return  adverts;
+    }*/
+
+    public List<AdDTO> getAds() {
+        List<Advert> adverts =  adRepository.findAll();
+        return adverts.stream().map((advert) -> {
+            AdDTO adDTO =  new AdDTO(advert.getId(), advert.getAppUser().getFirstname(), advert.getAppUser().getLastname(), advert.getType(), advert.getTitle(), advert.getDescription(), advert.getCreatedat(), advert.getImage());
+
+            return adDTO;
+        }).collect(Collectors.toList());
     }
 
     public Advert saveAd(AdRequest adRequest) throws IOException, NoSuchAlgorithmException {
