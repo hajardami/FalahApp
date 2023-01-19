@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity(name = "appuser")
-public class AppUser {
+public class AppUser extends Auditable<String> {
 
     @SequenceGenerator(
             name = "user_sequence",
@@ -79,6 +79,14 @@ public class AppUser {
         this.role = role;
         this.profession = profession;
         this.isActive = isActive;
+    }
+
+    public AppUser(Long id, String firstname, String lastname, String email, String password) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
     }
 
 
