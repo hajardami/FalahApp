@@ -1,15 +1,19 @@
 import { BrowserRouter as Router, Route, Routes, useRoutes } from "react-router-dom";
-import { isMentee, isMentor, isGuest, isAdmin, logOut } from "./service/authentication"
+import { isExprt, isUser, isAdmin } from "./service/authentication"
 
 import SignIn from "./components/signin/SignIn"
 import SignUp from "./components/signup/Signup"
 import Home from "./components/home/Home"
+
 import DocVerification from "./components/Admin/DocVerification";
+
+import HomeAgri from "./components/agriculteur/HomeAgri";
 
 const GuestRoutes = () => useRoutes([
    {path: "/signin", element: <SignIn/>},
+   {path: "/home", element: <HomeAgri/>},
    {path: "/", element: <Home/>},
-   {path: "/signup", element: <SignUp/>},
+   {path: "/signup", element: <SignUp/>}
 ]);
 
 const AdminRoutes = () => useRoutes([
@@ -20,9 +24,19 @@ const AdminRoutes = () => useRoutes([
    
 ]);
 const getRoutes = () => {
+
     if (isAdmin()) return <AdminRoutes />;
     return <GuestRoutes />;
  }
  
 
-export { getRoutes };
+const getSideBar = () => {
+   //if(isExprt()||isUser()||isAdmin()) 
+   return <HomeAgri/>
+}
+
+
+
+
+
+export { getRoutes , getSideBar};

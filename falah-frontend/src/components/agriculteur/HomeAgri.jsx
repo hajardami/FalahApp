@@ -8,7 +8,6 @@ import Layout from '../sidebar/Layout';
 
 const HomeAgri = () => {
     return (
-    <Router>
         <Layout>
           <Routes>
           <Route path='/advert' element={<Adverts/>} />
@@ -17,7 +16,6 @@ const HomeAgri = () => {
           <Route path='/nouveautes' element={<Nouveaute />} />
           </Routes>
         </Layout>
-    </Router>
     );
 };
 
