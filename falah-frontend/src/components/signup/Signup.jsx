@@ -170,7 +170,10 @@ const Signup = () => {
                       autoComplete="new-password"
                       color="primary"
                     />
-                    {isExpert && (
+                    {
+                    
+                    
+                    isExpert && (
                       <div>
                         <div>Inserez la carte nationale d'identité</div>
                         <input
@@ -188,7 +191,24 @@ const Signup = () => {
                           name="certificate"
                           accept="image/*,application/pdf"
                         />
-                     
+                           <TextField
+                      required
+                      fullWidth
+                      id="decription"
+                      label="donne une petite description sur ce que vous faite pour vous client"
+                      name="Decription"
+                      autoComplete="family-name"
+                      color="primary"
+                    />
+                          <TextField
+                      required
+                      fullWidth
+                      id="phone"
+                      label="Numero de telephone"
+                      name="Numero de telephone"
+                      autoComplete="family-name"
+                      color="primary"
+                    />
                       </div>
                     )}
                        <div>Inserez votre Image</div>

@@ -72,7 +72,7 @@ public class ExpertService extends UserService<Expert>{
 
 
     public Expert createExpert(ExpertDto expertDto) throws IOException, NoSuchAlgorithmException {
-             Expert expert= new Expert(expertDto.getFirstName(),expertDto.getLastName(),expertDto.getEmail(),expertDto.getPassword(), AppUserRole.EXPERT,expertDto.getProfession());
+             Expert expert= new Expert(expertDto.getFirstName(),expertDto.getLastName(),expertDto.getEmail(),expertDto.getPassword(), AppUserRole.EXPERT,expertDto.getProfession(),expertDto.getDescription(),expertDto.getPhone());
         createUser(expert);
         fileService.uploadExpertDocuments(expert,expertDto.getExpertCertificate(),ExpertDocuments.EXPERT_CERTIFICATE);
         fileService.uploadExpertDocuments(expert,expertDto.getIdentityDocument(),ExpertDocuments.IDENTITY_DOCUMENT);

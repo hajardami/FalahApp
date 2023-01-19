@@ -9,14 +9,13 @@ import Layout from '../sidebar/Layout';
 const HomeAgri = () => {
     return (
         <Layout>
-          <Routes>
+       </Layout>
+    );
+};
+
+export default HomeAgri;   /*<Routes>
           <Route path='/advert' element={<Adverts/>} />
           <Route path='/forum' element={<Forum />} />
           <Route path='/expert' element={<Experts />} />
           <Route path='/nouveautes' element={<Nouveaute />} />
-          </Routes>
-        </Layout>
-    );
-};
-
-export default HomeAgri;
+         </Routes>*/
