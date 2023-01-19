@@ -31,7 +31,7 @@ export default function AdCard({name, title, description, createdat, type, photo
 
 
   return (
-      <Card sx={{ display: 'flex', maxWidth: 590}}>
+      <Card sx={{ display: 'inline-flex', width: 500}}>
         <ButtonBase
           onClick={() => handleShowDetails({name, title, description, createdat, type, photo})}
       >
@@ -42,15 +42,14 @@ export default function AdCard({name, title, description, createdat, type, photo
         alt="Live from space album cover"
       />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-      <CardContent sx={{ flex: '1 0 auto' }}>
+      <CardContent sx={{ flex: '1 0 auto' , width: 310}}>
             <Stack direction="row" justifyContent="space-between">
             <Typography  variant="h5" component="div">
-            
             {title}
           </Typography>
           <Item theme={theme}>{type}</Item>
             </Stack>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" noWrap= {true}>
           {description}
           </Typography>
         </CardContent>
@@ -58,7 +57,7 @@ export default function AdCard({name, title, description, createdat, type, photo
         <Stack direction="row" justifyContent="space-between"
   alignItems="center" sx={{ pl: 1, pb: 1, mr: 2}}>
         <Typography  variant="subtitle2" component="div">
-            {name}
+        <Box sx={{ fontWeight: 'bold', m: 1 }}>{name}</Box>
           </Typography>
           <Typography  variant="subtitle2" component="div">
             {createdat}
