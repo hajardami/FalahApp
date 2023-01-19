@@ -87,13 +87,13 @@ const Adverts = () => {
             <Grid container xs={12} sm={7} lg={6}>
             {adverts.data === "" ? <h1>loading</h1> : 
             <Stack spacing={2}>
-                {adverts.data.map((advert) => <AdCard firstname={advert.firstname} lastname={advert.lastname} type={advert.type} description={advert.description} createdat={advert.createdat} title={advert.title} handleShowDetails={handleShowDetails}/>)}
+                {adverts.data.map((advert) => <AdCard key={advert.createdat} name={advert.firstname + " " + advert.lastname} type={advert.type} description={advert.description} createdat={advert.createdat.slice(0,10)} title={advert.title} photo={"http://localhost:8080/api/document/"+advert.image} handleShowDetails={handleShowDetails}/>)}
             
             </Stack>
             }
             </Grid>
             <Grid container item xs={12} sm={5} lg={5}>
-              {shown ? <AdvertCard firstname={advert.firstname} lastname={advert.lastname} type={advert.type} description={advert.description} createdat={advert.createdat} title={advert.title}/> : <div></div>}  
+              {shown ? <AdvertCard name={advert.name} type={advert.type} description={advert.description} createdat={advert.createdat} title={advert.title} photo={advert.photo}/> : <div></div>}  
             </Grid>
             </Grid>
             

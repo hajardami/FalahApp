@@ -18,8 +18,7 @@ function App() {
 
   return (
   <Router>
-          
-          {getSideBar()}
+          {getSideBar()}        
           {getRoutes()}
       
   </Router>);
