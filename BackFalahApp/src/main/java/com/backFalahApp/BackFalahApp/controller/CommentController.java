@@ -34,9 +34,7 @@ public class CommentController {
     }
 
     @GetMapping("/getcomments/{postId}")
-    public ResponseEntity<List<CommentsDto>> getCommentByPostId(@
-
-                                                                            int postId)
+    public ResponseEntity<List<CommentsDto>> getCommentByPostId(@PathVariable int postId)
     {
 
         List<CommentsDto> commentsDto = commentsService.getAllCommentsByPostId(postId);
