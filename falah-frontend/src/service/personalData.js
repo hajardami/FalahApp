@@ -78,6 +78,26 @@ export function getId() {
         }
     );
 }
+export function getUserData(setUsers) {
+    axios.get(`http://localhost:8080/api/account/me`
+        , {
+            headers: {
+                "Authorization": `${localStorage.getItem("currentUser")}`
+            }
+        }
+    ).then(
+        (res) => {
+            setUsers({data: res.data});
+
+        }
+        ,
+        (err) => {
+            alert("erreur lors de l'acces à vos données, en cas de besoin contacter l'admin");
+            console.error(err);
+        }
+    );
+}
+
 export function getCoachData(setReceived, setFullName, setImage, setEmail, setSpeciality) {
     axios.get(`http://localhost:8080/api/coach/me`
         , {

@@ -13,6 +13,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import { Button, CardActionArea, CardActions, IconButton, Stack } from '@mui/material';
 import olive from '../../res/images/olive.png';
 import { ThemeProvider } from "@mui/material/styles";
+import ContactDialog from "./ContactDialog";
+import { useEffect, useState } from 'react';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.lightblack.main,
@@ -22,10 +24,29 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.white.main,
   }));
 
-const AdvertCard = ({name, title, description, createdat, type, photo}) => {
+const ExpertCard = ({name, profession, description,contact,image,email,numero}) => {
+  
+  const [open, setOpen] = React.useState(false);
+
+  const[shown, setShown] = useState(false);
+
+  const [advert, setAdvert] = useState({})
+
+  const handleClickOpen = () => {
+      setOpen(true);
+  };
+
+  const handleClose = () => {
+      setOpen(false);
+  };
+
+  const handleShowDetails = (ad) => {
+      setShown(true)
+      setAdvert(ad)
+  }
     return (
     <ThemeProvider theme={theme}>
-    <Card sx={{ maxWidth: 545, mt: 5, ml:10,minWidth: 500}}>
+    <Card sx={{ maxWidth: 545,minWidth:500 ,minHeight:400}}>
       <CardActionArea>
       <CardHeader
         avatar={
@@ -34,20 +55,22 @@ const AdvertCard = ({name, title, description, createdat, type, photo}) => {
           </Avatar>
         }
         title={name}
-        subheader={createdat}
+       
       />
         <CardMedia
           component="img"
-          height="160"
-          image={photo}
+          image={image}
           alt="green iguana"
+           height="360"
+         width="360"
+
         />
         <CardContent>
             <Stack direction="row" justifyContent="space-between">
             <Typography  variant="h5" component="div">
-            {title}
+            {profession}
           </Typography>
-          <Item theme={theme}>{type}</Item>
+          <Item theme={theme}>{profession}</Item>
             </Stack>
           <Typography variant="body2" color="text.secondary">
           {description}
@@ -55,9 +78,11 @@ const AdvertCard = ({name, title, description, createdat, type, photo}) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-      <Button variant="contained" size="small" color="primary" startIcon={<PersonIcon />}>
-        Voir ses coordonnées
+      <Button variant="contained" size="small" color="primary"  startIcon={<PersonIcon /> } onClick={handleClickOpen}>
+       Contactez-moi
       </Button>
+      <ContactDialog open={open} handleClose={handleClose} email={email} numero={numero} />
+
         
       </CardActions>
     </Card>
@@ -65,4 +90,4 @@ const AdvertCard = ({name, title, description, createdat, type, photo}) => {
     );
 };
 
-export default AdvertCard;
+export default ExpertCard;

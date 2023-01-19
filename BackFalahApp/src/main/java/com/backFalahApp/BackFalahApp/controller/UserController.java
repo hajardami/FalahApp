@@ -1,7 +1,9 @@
 package com.backFalahApp.BackFalahApp.controller;
 
+import com.backFalahApp.BackFalahApp.Dto.AdDTO;
 import com.backFalahApp.BackFalahApp.Dto.AppUserDto;
 import com.backFalahApp.BackFalahApp.Dto.ExpertDto;
+import com.backFalahApp.BackFalahApp.Dto.ExpertListDTO;
 import com.backFalahApp.BackFalahApp.enumerations.AppUserRole;
 import com.backFalahApp.BackFalahApp.model.AppUser;
 import com.backFalahApp.BackFalahApp.model.Expert;
@@ -77,7 +79,24 @@ public class UserController {
         );
     }
 
+    @GetMapping(path = "experts")
+    public ResponseEntity<List<ExpertListDTO>> getAdverts() {
+        return new ResponseEntity<>(
+                expertService.getExperts(),
+                HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/me", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppUser> getPersonalData(){
+        LOG.debug("new personal data get request ");
+        return new ResponseEntity<>(
+userService.findCurrentUser(),HttpStatus.OK
+        );
+    }
+
+
 }
+
 
 /*
 
