@@ -54,6 +54,7 @@ const SignIn = () => {
                 
                 let resData = extractRoleAndJWT(res.data);
                 localStorage.setItem("currentUser", resData[1]);
+                localStorage.setItem("currentEmail", data.get('email'));
                 if (resData[0] === "ROLE_EXPERT") {
                     localStorage.setItem("isExpert", "true");
                     localStorage.setItem("isAdmin", "false");
