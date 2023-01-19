@@ -6,7 +6,7 @@ import Avatar from '@mui/material/Avatar';
 import user from '../../res/images/user.png';
 import  Container  from '@mui/material/Container';
 import { goto } from '../../service/utils.js';
-
+import {logOut }from "../../service/authentication.js"
 
 const pages = [
   { name: 'Home', path: "/" },
@@ -29,6 +29,7 @@ const Sidebar = props => {
     </Container>
     <nav className={style.sidebar}>
       {sideMenu.map((item, index, to) => {
+      
         return <NavItem key={`${item.label}-${index}`} item={item} to={to}/>;
       })}
     </nav>
