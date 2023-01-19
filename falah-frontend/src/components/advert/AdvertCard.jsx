@@ -22,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.white.main,
   }));
 
-const AdvertCard = () => {
+const AdvertCard = ({name, title, desc, date, type}) => {
     return (
     <ThemeProvider theme={theme}>
     <Card sx={{ maxWidth: 345, mt: 5, ml:10}}>
@@ -33,8 +33,8 @@ const AdvertCard = () => {
             A
           </Avatar>
         }
-        title="Ahmed Hassani"
-        subheader="September 14, 2016"
+        title={name}
+        subheader={date}
       />
         <CardMedia
           component="img"
@@ -45,12 +45,12 @@ const AdvertCard = () => {
         <CardContent>
             <Stack direction="row" justifyContent="space-between">
             <Typography  variant="h5" component="div">
-            Cherche Olivier
+            {title}
           </Typography>
-          <Item theme={theme}>Achat</Item>
+          <Item theme={theme}>{type}</Item>
             </Stack>
           <Typography variant="body2" color="text.secondary">
-          bonjour je recherche 200 oliviers de 4ans d'âges pour plantation oliveraie envoyez moi vos tarifs, espèces et modalités. merci Quantite : 200
+          {desc}
           </Typography>
         </CardContent>
       </CardActionArea>
