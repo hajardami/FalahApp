@@ -27,7 +27,7 @@ public class AdController {
     consumes = "multipart/form-data",
     produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Advert> saveAd(@ModelAttribute AdRequest adRequest) throws IOException, NoSuchAlgorithmException {
-        adService.saveAd(adRequest);
+        //adService.saveAd(adRequest);
         return new ResponseEntity<>(
                 adService.saveAd(adRequest),
                 HttpStatus.CREATED

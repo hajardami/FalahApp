@@ -26,19 +26,19 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.white.main,
   }));
 
-export default function AdCard({firstname, lastname, title, description, createdat, type, handleShowDetails}) {
+export default function AdCard({name, title, description, createdat, type, photo, handleShowDetails}) {
   const theme = useTheme();
 
 
   return (
       <Card sx={{ display: 'flex', maxWidth: 590}}>
         <ButtonBase
-          onClick={() => handleShowDetails({firstname, lastname, title, description, createdat, type})}
+          onClick={() => handleShowDetails({name, title, description, createdat, type, photo})}
       >
         <CardMedia
         component="img"
         sx={{ width: 151 }}
-        image={olive}
+        image={photo}
         alt="Live from space album cover"
       />
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -58,7 +58,7 @@ export default function AdCard({firstname, lastname, title, description, created
         <Stack direction="row" justifyContent="space-between"
   alignItems="center" sx={{ pl: 1, pb: 1, mr: 2}}>
         <Typography  variant="subtitle2" component="div">
-            {firstname}  {lastname}
+            {name}
           </Typography>
           <Typography  variant="subtitle2" component="div">
             {createdat}
