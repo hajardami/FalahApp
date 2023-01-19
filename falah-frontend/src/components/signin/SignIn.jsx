@@ -55,9 +55,11 @@ const SignIn = () => {
                 localStorage.setItem("currentUser", resData[1]);
                 if (resData[0] === "ROLE_EXPERT") {
                     localStorage.setItem("isExpert", "true");
+                    localStorage.setItem("isAdmin", "false");
                 } else if (resData[0] === "ROLE_CLIENT") {
                     localStorage.setItem("isExpert", "false");
-                } else if (resData[0] === "ROLE_SUPERUSER") {
+                    localStorage.setItem("isAdmin", "false");
+                } else if (resData[0] === "ROLE_ADMIN") {
                     localStorage.setItem("isAdmin", "true");
                 }
                 setSuccessful(true);

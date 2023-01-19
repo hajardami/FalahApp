@@ -1,6 +1,7 @@
 package com.backFalahApp.BackFalahApp.service;
 
 import com.backFalahApp.BackFalahApp.Dto.ExpertDto;
+import com.backFalahApp.BackFalahApp.Dto.ExpertNotVDTO;
 import com.backFalahApp.BackFalahApp.enumerations.AppUserRole;
 import com.backFalahApp.BackFalahApp.enumerations.ExpertDocuments;
 import com.backFalahApp.BackFalahApp.exceptions.ExpertNotFoundException;
@@ -20,6 +21,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -78,7 +80,7 @@ public class ExpertService extends UserService<Expert>{
         return expert;
     }
 
-    public Expert findCurrentCoach() {
+    public Expert findCurrentExpert() {
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Optional<Expert> coach = expertRepository.findByEmail(email);
         if (coach.isPresent())
@@ -87,4 +89,21 @@ public class ExpertService extends UserService<Expert>{
     }
 
 
+    public HttpStatus verifyCoach(long coach_id) {
+        Expert expert = getUserWithId(coach_id);
+        expert.setVerified(true);
+        expertRepository.save(expert);
+        return HttpStatus.OK;
+    }
+
+
+    public List<ExpertNotVDTO> listNotVerified() {
+        return expertRepository.findExpertByVerified(false).stream().map(
+                expert -> new ExpertNotVDTO(expert.getId(),expert.getFirstname() + " " + expert.getLastname(),expert.getExpertCertificate(),
+                        expert.getIdentityDocument(),expert.getPersonalphoto())
+        ).collect(Collectors.toList());
+    }
 }
+
+
+

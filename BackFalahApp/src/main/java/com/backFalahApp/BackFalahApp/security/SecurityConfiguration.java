@@ -57,9 +57,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/account/**").permitAll()
                 .antMatchers("/api/account/create/**").permitAll()
                 .antMatchers("/annonces/**").permitAll()
+                .antMatchers("/api/**").permitAll()
 
 
         ;
+        ///api/superuser
     }
 
     @Bean
@@ -88,7 +90,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         configuration.setAllowCredentials(true);
         // setAllowedHeaders is important! Without it, OPTIONS preflight request
         // will fail with 403 Invalid CORS request
-     configuration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type", "email", "coach_id"));
+     configuration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type", "email", "expert_id"));
         configuration.addExposedHeader("Authorization");
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
