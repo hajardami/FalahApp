@@ -19,49 +19,50 @@ import Link from '@mui/material/Link'
 import ExpertCard from './ExpertCard';
 
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.lightblack.main,
+    backgroundColor: "#007155",
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.white.main,
   }));
 
-export default function ExpCard({firstname, lastname, title, description, createdat, type, handleShowDetails}) {
+export default function ExpCard({name, profession, description,contact,image, email,numero,handleShowDetails,}) {
   const theme = useTheme();
 
 
   return (
-      <Card sx={{ display: 'flex', maxWidth: 590}}>
+      <Card sx={{ display: 'flex', maxWidth: 590 ,minWidth:500}}>
         <ButtonBase
-          onClick={() => handleShowDetails({firstname, lastname, title, description, createdat, type})}
+          onClick={() => handleShowDetails({name, profession, description,contact,image,email,numero})}
       >
+
         <CardMedia
         component="img"
         sx={{ width: 151 }}
-        image={olive}
-        alt="Live from space album cover"
+        image={image}
+        alt="Expert"
       />
+       
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
       <CardContent sx={{ flex: '1 0 auto' }}>
-            <Stack direction="row" justifyContent="space-between">
+            <Stack direction="row" justifyContent="space-between"   spacing={12}
+>
             <Typography  variant="h5" component="div">
-            
-            {title}
+            {name} 
           </Typography>
-          <Item theme={theme}>{type}</Item>
+          <Item theme={theme}>{profession}</Item>
             </Stack>
           <Typography variant="body2" color="text.secondary">
-          {description}
-          </Typography>
+
+         </Typography>
         </CardContent>
 
         <Stack direction="row" justifyContent="space-between"
   alignItems="center" sx={{ pl: 1, pb: 1, mr: 2}}>
         <Typography  variant="subtitle2" component="div">
-            {firstname}  {lastname}
+        N'hésitez pas à me contacter!
           </Typography>
           <Typography  variant="subtitle2" component="div">
-            {createdat}
           </Typography>
         </Stack>
       </Box>

@@ -9,6 +9,7 @@ import com.backFalahApp.BackFalahApp.repository.UserRepository;
 import com.backFalahApp.BackFalahApp.security.JwtChangePassword;
 import com.backFalahApp.BackFalahApp.security.JwtLogin;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -103,4 +104,14 @@ public class UserService<T extends AppUser> {
         }
         return  HttpStatus.OK;
     }
+
+    public T findCurrentUser() {
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<T> userac = userRepository.findByEmail(email);
+        if (userac.isPresent())
+            return userac.get();
+        throw new UserNotFoundException(email);
+    }
+
+
 }

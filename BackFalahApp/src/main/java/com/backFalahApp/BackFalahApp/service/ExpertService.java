@@ -111,7 +111,7 @@ public class ExpertService extends UserService<Expert>{
     public List<ExpertListDTO> getExperts() {
         List<Expert> experts =  expertRepository.findAll();
         return experts.stream().map((expert) -> {
-            ExpertListDTO adDTO =  new ExpertListDTO(expert.getId(),expert.getFirstname(),expert.getLastname(),expert.getEmail(), expert.getProfession(), expert.getDescription(),expert.getPhone());
+            ExpertListDTO adDTO =  new ExpertListDTO(expert.getId(),expert.getFirstname(),expert.getLastname(),expert.getEmail(), expert.getProfession(), expert.getDescription(),expert.getPhone(),expert.getPersonalphoto());
             return adDTO;
         }).collect(Collectors.toList());
     }

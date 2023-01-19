@@ -13,9 +13,10 @@ public class ExpertListDTO {
     String profession;
     String description;
     String phone;
+    String image;
 
 
-    public ExpertListDTO(Long id, String firstName, String lastName, String email, String profession, String description, String phone) {
+    public ExpertListDTO(Long id, String firstName, String lastName, String email, String profession, String description, String phone,String image) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -23,5 +24,6 @@ public class ExpertListDTO {
         this.profession = profession;
         this.description = description;
         this.phone = phone;
+        this.image=image;
     }
 }

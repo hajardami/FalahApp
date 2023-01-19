@@ -69,14 +69,14 @@ const Experts = () => {
         <><Layout>
         <ThemeProvider theme={theme}>
             <Box pb={10}>
-            <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={25}>
+            <Stack direction="row" justifyContent="flex-start" alignItems="center"  spacing={25}>
             <img src={falahlogo} alt="logo" width={"200px"} />
             <Typography
                 fontSize="30px"
                 lineHeight="93px"
                 fontWeight="bold"
             >
-                Page des annonces
+                Page des Experts
             </Typography>
             </Stack>
             <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={10}>
@@ -89,13 +89,17 @@ const Experts = () => {
             <Grid container xs={12} sm={7} lg={6}>
             {experts.data === "" ? <h1>loading</h1> : 
             <Stack spacing={2}>
-                {experts.data.map((advert) => <ExpCard firstname={advert.firstname} lastname={advert.lastname} type={advert.profession} description={advert.description}  handleShowDetails={handleShowDetails}/>)}
+                {experts.data.map((advert) => <ExpCard  name={advert.firstName +" "+ advert.lastName} profession={advert.profession} contact={advert.phone} description={advert.description} image={"http://localhost:8080/api/document/" + advert.image} handleShowDetails={handleShowDetails} email={advert.email} numero={advert.phone}/>) 
+                }
             
             </Stack>
             }
             </Grid>
-            <Grid container item xs={12} sm={5} lg={5}>
-              {shown ? <ExpertCard firstname={advert.firstname} lastname={advert.lastname} type={advert.profession} description={advert.description} /> : <div></div>}  
+            <Grid container item xs={12} sm={7} lg={6}>
+              {shown ? <ExpertCard  name={advert.name} profession={advert.profession} contact={advert.phone} description={advert.description} image={advert.image} 
+              
+              email={advert.email} numero={advert.numero}
+              /> : <div></div>}  
             </Grid>
             </Grid>
             

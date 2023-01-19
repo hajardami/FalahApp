@@ -85,7 +85,18 @@ public class UserController {
                 expertService.getExperts(),
                 HttpStatus.OK);
     }
+
+    @GetMapping(value = "/me", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppUser> getPersonalData(){
+        LOG.debug("new personal data get request ");
+        return new ResponseEntity<>(
+userService.findCurrentUser(),HttpStatus.OK
+        );
+    }
+
+
 }
+
 
 /*
 
