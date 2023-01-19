@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -76,6 +77,9 @@ public class ExpertService extends UserService<Expert>{
 
     public Expert createExpert(ExpertDto expertDto) throws IOException, NoSuchAlgorithmException {
              Expert expert= new Expert(expertDto.getFirstName(),expertDto.getLastName(),expertDto.getEmail(),expertDto.getPassword(), AppUserRole.EXPERT,expertDto.getProfession(),expertDto.getDescription(),expertDto.getPhone());
+        Date date = new Date();
+
+        expert.setCreatedDate(date);
         createUser(expert);
         fileService.uploadExpertDocuments(expert,expertDto.getExpertCertificate(),ExpertDocuments.EXPERT_CERTIFICATE);
         fileService.uploadExpertDocuments(expert,expertDto.getIdentityDocument(),ExpertDocuments.IDENTITY_DOCUMENT);
