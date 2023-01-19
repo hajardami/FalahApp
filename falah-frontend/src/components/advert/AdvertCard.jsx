@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import {CardHeader, Avatar} from '@mui/material'
+import {CardHeader, Avatar, Box} from '@mui/material'
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -25,7 +25,8 @@ const Item = styled(Paper)(({ theme }) => ({
 const AdvertCard = ({name, title, description, createdat, type, photo}) => {
     return (
     <ThemeProvider theme={theme}>
-    <Card sx={{ maxWidth: 545, mt: 5, ml:10,minWidth: 500}}>
+    <Card sx={{ width: 390, mt: 5, ml:10}}>
+
       <CardActionArea>
       <CardHeader
         avatar={
@@ -49,7 +50,7 @@ const AdvertCard = ({name, title, description, createdat, type, photo}) => {
           </Typography>
           <Item theme={theme}>{type}</Item>
             </Stack>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" sx={{ wordBreak: "break-word" }}>
           {description}
           </Typography>
         </CardContent>
