@@ -1,22 +1,29 @@
 package com.backFalahApp.BackFalahApp.model;
 
 import com.backFalahApp.BackFalahApp.enumerations.AppUserRole;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import java.util.List;
-@Entity
+import java.util.Set;
 
+
+@Entity
+@NoArgsConstructor
 public class Expert extends  AppUser{
 
     private String identityDocument;
 
-    public Expert(String firstname, String lastname, String email, String password, AppUserRole role, String profession,String personalphoto) {
+    public Expert(String firstname, String lastname, String email, String password, AppUserRole role, String profession, String personalphoto) {
         super(firstname, lastname, email, password, role, profession, personalphoto);
     }
 
-    public Expert(String firstname, String lastname, String email, String password, AppUserRole role, String profession) {
-        super(firstname, lastname, email, password, role, profession);
+    public Expert(int id,String firstname, String lastname, String email, String password, AppUserRole role, String profession) {
+        super(id,firstname, lastname, email, password, role, profession);
     }
+
+
+
     public String getIdentityDocument() {
         return identityDocument;
     }
