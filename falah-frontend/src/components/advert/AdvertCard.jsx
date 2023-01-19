@@ -25,7 +25,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const AdvertCard = ({name, title, description, createdat, type, photo}) => {
     return (
     <ThemeProvider theme={theme}>
-    <Card sx={{ maxWidth: 545, mt: 5, ml:10}}>
+    <Card sx={{ maxWidth: 545, mt: 5, ml:10,minWidth: 500}}>
       <CardActionArea>
       <CardHeader
         avatar={

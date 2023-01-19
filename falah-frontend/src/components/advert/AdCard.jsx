@@ -31,7 +31,7 @@ export default function AdCard({name, title, description, createdat, type, photo
 
 
   return (
-      <Card sx={{ display: 'flex', maxWidth: 590}}>
+      <Card sx={{ display: 'flex', maxWidth: 590 ,minWidth: 560}}>
         <ButtonBase
           onClick={() => handleShowDetails({name, title, description, createdat, type, photo})}
       >
