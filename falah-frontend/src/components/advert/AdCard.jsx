@@ -26,14 +26,14 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.white.main,
   }));
 
-export default function AdCard({name, title, desc, date, type, handleShowDetails}) {
+export default function AdCard({firstname, lastname, title, description, createdat, type, handleShowDetails}) {
   const theme = useTheme();
 
 
   return (
       <Card sx={{ display: 'flex', maxWidth: 590}}>
         <ButtonBase
-          onClick={() => handleShowDetails({name, title, desc, date, type})}
+          onClick={() => handleShowDetails({firstname, lastname, title, description, createdat, type})}
       >
         <CardMedia
         component="img"
@@ -51,17 +51,17 @@ export default function AdCard({name, title, desc, date, type, handleShowDetails
           <Item theme={theme}>{type}</Item>
             </Stack>
           <Typography variant="body2" color="text.secondary">
-          {desc}
+          {description}
           </Typography>
         </CardContent>
 
         <Stack direction="row" justifyContent="space-between"
   alignItems="center" sx={{ pl: 1, pb: 1, mr: 2}}>
         <Typography  variant="subtitle2" component="div">
-            {name}
+            {firstname}  {lastname}
           </Typography>
           <Typography  variant="subtitle2" component="div">
-            {date}
+            {createdat}
           </Typography>
         </Stack>
       </Box>

@@ -22,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.white.main,
   }));
 
-const AdvertCard = ({name, title, desc, date, type}) => {
+const AdvertCard = ({firstname, lastname, title, description, createdat, type}) => {
     return (
     <ThemeProvider theme={theme}>
     <Card sx={{ maxWidth: 345, mt: 5, ml:10}}>
@@ -33,8 +33,8 @@ const AdvertCard = ({name, title, desc, date, type}) => {
             A
           </Avatar>
         }
-        title={name}
-        subheader={date}
+        title={firstname}
+        subheader={createdat}
       />
         <CardMedia
           component="img"
@@ -50,7 +50,7 @@ const AdvertCard = ({name, title, desc, date, type}) => {
           <Item theme={theme}>{type}</Item>
             </Stack>
           <Typography variant="body2" color="text.secondary">
-          {desc}
+          {description}
           </Typography>
         </CardContent>
       </CardActionArea>

@@ -14,4 +14,5 @@ public interface CustomAd {
     String getEmail();
     String getFirstname();
     String getLastname();
+    String getImage();
 }

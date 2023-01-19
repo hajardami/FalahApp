@@ -1,5 +1,6 @@
 package com.backFalahApp.BackFalahApp.controller;
 
+import com.backFalahApp.BackFalahApp.Dto.AdDTO;
 import com.backFalahApp.BackFalahApp.Dto.AdRequest;
 import com.backFalahApp.BackFalahApp.Dto.CustomAd;
 import com.backFalahApp.BackFalahApp.model.Advert;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "annonces")
@@ -42,8 +44,16 @@ public class AdController {
                 HttpStatus.CREATED
         );
     }*/
+//    @GetMapping(path = "adverts")
+//    public Collection<CustomAd> getAdverts() throws IOException {
+//        return adService.getAds();
+//    }
+
     @GetMapping(path = "adverts")
-    public Collection<CustomAd> getAdverts() throws IOException {
-        return adService.getAds();
+    public ResponseEntity<List<AdDTO>> getAdverts() {
+        return new ResponseEntity<>(
+                adService.getAds(),
+                HttpStatus.OK
+        );
     }
 }
