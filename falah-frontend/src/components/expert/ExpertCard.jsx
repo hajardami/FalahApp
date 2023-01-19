@@ -22,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.white.main,
   }));
 
-const AdvertCard = ({firstname, lastname, title, description, createdat, type}) => {
+const ExpertCard = ({firstname, lastname, title, description, createdat, type}) => {
     return (
     <ThemeProvider theme={theme}>
     <Card sx={{ maxWidth: 545, mt: 5, ml:10}}>
@@ -65,4 +65,4 @@ const AdvertCard = ({firstname, lastname, title, description, createdat, type}) 
     );
 };
 
-export default AdvertCard;
+export default ExpertCard;
