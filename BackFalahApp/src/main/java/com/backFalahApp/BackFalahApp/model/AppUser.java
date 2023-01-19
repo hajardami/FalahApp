@@ -71,6 +71,17 @@ public class AppUser {
     @Column(name = "isActive", columnDefinition = "BOOLEAN default TRUE")
     private boolean isActive;
 
+    public AppUser(String firstname, String lastname, String email, String password, AppUserRole role, String profession, boolean isActive) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.profession = profession;
+        this.isActive = isActive;
+    }
+
+
     public boolean isActive() {
         return isActive;
     }
