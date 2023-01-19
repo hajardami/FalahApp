@@ -53,7 +53,7 @@ public class Expert extends  AppUser{
     /**
      * path to image of coach
      */
-    private Boolean verified = true;
+    private Boolean verified = false;
     public Expert(String identityDocument, String expertCertificate, Boolean verified) {
 
         this.identityDocument = identityDocument;

@@ -24,4 +24,4 @@ function logOut(){
 }
 
 
-export {isGuest,logOut}
+export {isGuest,logOut,isAdmin}
