@@ -51,13 +51,14 @@ const SignIn = () => {
             }
         }).then(
             (res) => {
+                
                 let resData = extractRoleAndJWT(res.data);
                 localStorage.setItem("currentUser", resData[1]);
                 localStorage.setItem("currentEmail", data.get('email'));
                 if (resData[0] === "ROLE_EXPERT") {
                     localStorage.setItem("isExpert", "true");
                     localStorage.setItem("isAdmin", "false");
-                } else if (resData[0] === "ROLE_CLIENT") {
+                } else if (resData[0] === "ROLE_USER") {
                     localStorage.setItem("isExpert", "false");
                     localStorage.setItem("isAdmin", "false");
                 } else if (resData[0] === "ROLE_ADMIN") {

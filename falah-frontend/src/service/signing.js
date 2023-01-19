@@ -46,6 +46,8 @@ const createExpert = (data,setSuccessful) => {
     tempData.append("image", data.get('image'));
     tempData.append("expertCertificate", data.get('certificate'));
     tempData.append("identityDocument", data.get('cin'));
+    tempData.append("description", data.get('description'));
+    tempData.append("phone", data.get('phone'));
     axios.post(`http://localhost:8080/api/account/create/expert`, tempData
     ).then(
         (res) => {

@@ -19,7 +19,9 @@ public class ExpertDto
     MultipartFile identityDocument;
     MultipartFile expertCertificate;
     MultipartFile image;
-   String profession;
+    String profession;
+    String description;
+    String phone;
 
 
 

@@ -2,15 +2,16 @@ import {
     ViewListIcon,
     ChatAlt2Icon,
     BadgeCheckIcon, 
-    InformationCircleIcon
+    InformationCircleIcon,LogoutIcon
   } from '@heroicons/react/outline';
   
-
+ 
   export const sideMenu = [
     {
       label: 'Annonces',
       Icon: ViewListIcon,
-      to: '/advert',
+      to: '/',
+   
     },
     {
       label: 'Forum',
@@ -27,5 +28,10 @@ import {
     label: 'Nouveautés',
     Icon: InformationCircleIcon ,
     to: '/nouveautes'
+},
+{
+  label: 'Log out',
+  Icon: LogoutIcon ,
+  to: '/Logout'
 },
 ];

@@ -13,9 +13,13 @@ import theme from '../../style/theme';
 import { Grid3x3 } from '@mui/icons-material';
 import AddAdvertDialog from './AddAdvertDialog';
 import AdCard from './AdCard';
+
+import HomeAgri from '../agriculteur/HomeAgri';
+import Layout from "../sidebar/Layout"
 import { getAllAdverts } from '../../service/advert';
 
 const ads  = [
+
     {
         "title" : "Cherche Olivier",
         "type" : "Achat",
@@ -63,6 +67,7 @@ const Adverts = () => {
     }
 
     return (
+        <><Layout>
         <ThemeProvider theme={theme}>
             <Box pb={10}>
             <Stack direction="row" justifyContent="flex-start" alignItems="center" spacing={25}>
@@ -99,6 +104,8 @@ const Adverts = () => {
             
             </Box>
         </ThemeProvider>
+        </Layout>
+        </>
     );
 };
 

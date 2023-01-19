@@ -18,7 +18,7 @@ function App() {
 
   return (
   <Router>
-          {getSideBar()}        
+          
           {getRoutes()}
       
   </Router>);
@@ -27,11 +27,3 @@ function App() {
 
 export default App;
 
-/*
-<Router>
-    <Routes>
-    <Route exact path='/' element={< Home />}></Route>
-   <Route exact path='/homeagri' element={< HomeAgri />}></Route>
-    </Routes>
-  </Router>
-*/ 
