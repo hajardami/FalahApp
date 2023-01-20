@@ -41,6 +41,7 @@ const AddAdvertDialog = (props) => {
             name="description"
             label="Description de l'annonce"
             multiline
+            rows={4}
             fullWidth
             variant="outlined"
           />

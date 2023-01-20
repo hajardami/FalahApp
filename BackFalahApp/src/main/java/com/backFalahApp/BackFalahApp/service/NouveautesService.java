@@ -40,7 +40,7 @@ public class NouveautesService {
         List<Nouveautes> nouveautes =  nouveautesRepository.findAll();
 
         return nouveautes.stream().map((news) -> {
-            NouveauteDto newsDto =  new NouveauteDto(news.getId(),news.getTitle(), news.getDescription(), news.getImage());
+            NouveauteDto newsDto =  new NouveauteDto(news.getId(),news.getTitle(), news.getDescription(), news.getCreatedat(), news.getImage());
 
             return newsDto;
         }).collect(Collectors.toList());
