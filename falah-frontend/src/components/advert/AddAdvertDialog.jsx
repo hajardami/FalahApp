@@ -34,16 +34,7 @@ const AddAdvertDialog = (props) => {
             fullWidth
             variant="outlined"
           />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="description"
-            name="description"
-            label="Description de l'annonce"
-            multiline
-            fullWidth
-            variant="outlined"
-          />
+        c
           <TextField
             autoFocus
             margin="dense"

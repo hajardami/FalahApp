@@ -12,14 +12,15 @@ import Nouveaute from "./components/nouveautes/Nouveaute";
 import DocVerification from "./components/Admin/DocVerification";
 import {goto} from "./service/utils";
 import HomeAgri from "./components/agriculteur/HomeAgri";
-
+import BecomeExpert from "./components/signup/BecomeExpert"
 const GuestRoutes = () => {
     logOut();
    return useRoutes([
    {path: "/signin", element: <SignIn/>},
    {path: "/", element: <Home/>},
    {path: "/signup", element: <SignUp/>},
-  
+   {path: "/expert", element: <BecomeExpert/>},
+
    
 ]);}
 
@@ -56,6 +57,7 @@ const getRoutes = () => {
 
     if (isAdmin()) return <AdminRoutes />;
     if(isUser()) return <UserRoutes/>;
+    
     return <GuestRoutes />;
     
  }
