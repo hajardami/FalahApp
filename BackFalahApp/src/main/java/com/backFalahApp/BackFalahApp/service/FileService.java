@@ -6,6 +6,7 @@ import com.backFalahApp.BackFalahApp.exceptions.FileTypeInappropriateException;
 import com.backFalahApp.BackFalahApp.model.Advert;
 import com.backFalahApp.BackFalahApp.model.AppUser;
 import com.backFalahApp.BackFalahApp.model.Expert;
+import com.backFalahApp.BackFalahApp.model.Nouveautes;
 import com.backFalahApp.BackFalahApp.utils.FileConfig;
 import com.backFalahApp.BackFalahApp.utils.FileUtils;
 import com.backFalahApp.BackFalahApp.utils.MD5;
@@ -59,5 +60,16 @@ public class FileService {
         String documentPath = fileConfig.getDirectory();
         FileUtils.saveFile(file,documentPath, documentName);
         advert.setImage(documentName);
+    }
+
+    public void uploadImageNews(Nouveautes news, MultipartFile file) throws IOException, NoSuchAlgorithmException {
+        if (file == null || file.getContentType() == null) throw new FileNullException();
+        if(!file.getContentType().startsWith("image") && !file.getContentType().startsWith("application/pdf")){
+            throw new FileTypeInappropriateException(file.getContentType().toLowerCase(),"image","pdf");
+        }
+        String documentName = MD5.getMD5Hash(news.getTitle()) + "." + FileUtils.getExtension(file);
+        String documentPath = fileConfig.getDirectory();
+        FileUtils.saveFile(file,documentPath, documentName);
+        news.setImage(documentName);
     }
 }
