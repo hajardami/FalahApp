@@ -18,6 +18,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {goto} from "../../service/utils";
 import {getAllCoaches, verifyCoach} from "../../service/personalData";
 import MyButton from "../shared/MyButton";
+import AddNewsDialog from './AddNewsDialog';
 
 const columns = [
     {id: 'name', label: 'Expert ', minWidth: 170},
@@ -53,6 +54,7 @@ function logOut(){
 
 export default function ListCoach() {
 
+    const [open, setOpen] = React.useState(false);
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     let [courses, setCourses] = useState({data: ""});
@@ -81,6 +83,14 @@ export default function ListCoach() {
         setPage(0);
     };
 
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return (
 
         <>
@@ -91,6 +101,8 @@ export default function ListCoach() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
         
           </Typography>
+          <Button color="inherit" onClick={handleClickOpen}>Ajouter une nouveauté</Button>
+          <AddNewsDialog open={open} handleClose={handleClose}/>
           <Button color="inherit" onClick={logOut}>Log Out</Button>
         </Toolbar>
       </AppBar>
