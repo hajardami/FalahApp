@@ -90,7 +90,7 @@ const Appbar = () => {
                 <MenuItem onClick={handleClose}>Arabe</MenuItem>
             </Menu>
           </Box>
-          <Button variant="outlined" sx={{borderRadius : "20px", "&:hover": {backgroundColor: alpha("#007155", 0.7), color: "white"}}}>Contact us</Button>
+          <Button href="/signin"variant="outlined" sx={{borderRadius : "20px", "&:hover": {backgroundColor: alpha("#007155", 0.7), color: "white"}}}>Sign In</Button>
             </Toolbar>
         </AppBar>
         </ThemeProvider>

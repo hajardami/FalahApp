@@ -34,6 +34,7 @@ const AddAdvertDialog = (props) => {
             fullWidth
             variant="outlined"
           />
+
           <TextField
             autoFocus
             margin="dense"
@@ -45,6 +46,7 @@ const AddAdvertDialog = (props) => {
             fullWidth
             variant="outlined"
           />
+
           <TextField
             autoFocus
             margin="dense"
